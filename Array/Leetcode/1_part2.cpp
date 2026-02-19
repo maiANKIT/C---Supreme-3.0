@@ -8,7 +8,7 @@ int main()
 {
 
     int n;
-    cout << "Enter number of elements: ";
+    cout << "Enter elements: ";
     cin >> n;
 
     vector<int> nums(n);
