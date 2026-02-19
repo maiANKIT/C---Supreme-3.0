@@ -36,7 +36,7 @@ int main()
         }
         else
         {
-            break;
+            break; // we apply break here
         }
     }
 
