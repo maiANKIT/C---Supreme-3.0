@@ -22,23 +22,27 @@ int main()
     vector<int> answer;
     int j = 0;
 
-    for (int i = 0; j < nums.size(); i++)
+    int i = 0;
+
+    while (j < nums.size())
     {
 
         if (i == j)
         {
+            i++;
             continue;
         }
-        else if (i < nums.size())
+        else if (i >= nums.size())
         {
-            product = product * nums[i];
+            i = 0;
+            j++;
+            answer.push_back(product);
+            product = 1;
         }
         else
         {
-            answer.push_back(product);
-            product = 1;
-            i = 0;
-            j++;
+            product = product * nums[i];
+            i++;
         }
     }
 
