@@ -18,18 +18,19 @@ int main()
         cin >> nums[i];
     }
 
-    int sum = 0;
-
-    for (int i = 1; i < nums.size(); i++)
-    {
-        nums[i] = nums[i] + nums[i - 1];
-    }
-
-    cout << "ans: ";
+    int count = 0;
     for (int i = 0; i < nums.size(); i++)
     {
-        cout << nums[i] << " ";
+        for (int j = i + 1; j < nums.size(); j++)
+        {
+            if (nums[i] == nums[j])
+            {
+                count++;
+            }
+        }
     }
+
+    cout << "ans: " << count;
 
     return 0;
 }

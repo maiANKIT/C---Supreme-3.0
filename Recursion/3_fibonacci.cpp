@@ -31,7 +31,7 @@ int main()
     cout << "enter the n: ";
     cin >> n;
 
-    int ans = fibonacci(n);
+    int ans = fibonacci(n + 1);
 
     cout << ans;
 

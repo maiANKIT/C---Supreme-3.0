@@ -8,6 +8,8 @@ private:
     int age;
     int weight;
 
+    // private ko access krne k liye pahle public me aa k getter aur setter use kro
+
 public:
     void eat()
     {
