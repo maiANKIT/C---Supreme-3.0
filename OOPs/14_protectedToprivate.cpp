@@ -4,13 +4,13 @@ using namespace std;
 
 class animal
 {
-
 protected:
     int age;
 };
 
-class dog : protected animal
+class dog : private animal
 {
+
 public:
     void print()
     {
