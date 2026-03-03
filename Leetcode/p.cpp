@@ -5,11 +5,14 @@ using namespace std;
 int main()
 {
 
-    int num;
-    cout << "enter the value: ";
-    cin >> num;
+    string s = "";
 
-    string s = 4 + 48;
+    char t = '0' + 25;
+
+    s = 'm';
+    s = s + to_string(25);
+
+    cout << s;
 
     return 0;
 }
