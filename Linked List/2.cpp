@@ -9,12 +9,14 @@ public:
     int data;
     Node *next;
 
+    // default constructor
     Node()
     {
         this->data = 0;
         this->next = NULL;
     }
 
+    // this is not default constructor
     Node(int data)
     {
         this->data = data;
@@ -22,32 +24,38 @@ public:
     }
 };
 
-void print(Node *&head) // by reference laganae ki jaraurat nhi h par kr skte h achha hota h
+void print(Node *&head) // ye ek function hi h
 {
-    Node *temp = head;
+
+    Node *temp = head; // isme second linked h
     while (temp != NULL)
     {
-        cout << temp->data << " ";
-        temp = temp->next;
+        cout << temp->data << " "; // second print hoga
+        temp = temp->next;         // second ka ho gya ab next ko call kr rhe h
     }
 }
 
 int main()
 {
 
+    // creating node
+
     Node *first = new Node(10);
     Node *second = new Node(20);
     Node *third = new Node(30);
-    Node *fourth = new Node(40);
+    Node *forth = new Node(40);
     Node *fifth = new Node(50);
+
+    // linking nodes
 
     first->next = second;
     second->next = third;
-    third->next = fourth;
-    fourth->next = fifth;
+    third->next = forth;
+    forth->next = fifth;
 
-    cout << "printing the LL" << endl;
-    print(first);
+    // printing LL using function
+    cout << "printing: ";
+    print(second);
 
     return 0;
 }
