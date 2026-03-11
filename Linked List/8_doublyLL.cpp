@@ -23,6 +23,11 @@ public:
         this->prev = NULL;
         this->next = NULL;
     }
+
+    ~Node()
+    {
+        cout << "Node with value: " << this->data << " deleted" << endl;
+    }
 };
 
 void print(Node *&head)
@@ -155,6 +160,87 @@ void insertAtPosition(Node *&head, Node *&tail, int data, int position)
     }
 }
 
+void deleteFromPos(Node *&head, Node *&tail, int position)
+{
+    if (head == NULL)
+    {
+        cout << "LL is empty";
+        return;
+    }
+
+    if (head->next == NULL)
+    {
+        // single node
+
+        Node *temp = head;
+        head = NULL;
+        tail = NULL;
+        delete temp;
+        return;
+    }
+
+    int len = getLength(head);
+    if (position > len)
+    {
+        cout << "please enter valid enter position" << endl;
+        return;
+    }
+
+    if (position == 1)
+    {
+
+        // want to delete first node
+        Node *temp = head;
+        head = head->next;
+        head->prev = NULL;
+        temp->next = NULL;
+        delete temp;
+        return;
+    }
+
+    // int len = getLength(head);
+    if (position == len)
+    {
+        // delete last node
+        Node *temp = tail;
+        tail = tail->prev;
+        temp->prev = NULL;
+        tail->next = NULL;
+        delete temp;
+        return;
+    }
+
+    // delete from middle of LL
+
+    // step 1: find left curr and right
+    int i = 1;
+    Node *left = head;
+
+    while (i < position - 1)
+    {
+        left = left->next;
+        i++;
+    }
+
+    Node *curr = left->next;
+    Node *right = curr->next;
+
+    // step 2:
+    left->next = right;
+
+    // step 3:
+    right->prev = left;
+
+    // step 4:
+    curr->next = NULL;
+
+    // step 5:
+    curr->prev = NULL;
+
+    delete curr;
+    // return;
+}
+
 int main()
 {
 
@@ -184,6 +270,11 @@ int main()
 
     insertAtPosition(head, tail, 401, 8);
     print(head);
+    cout << endl;
+
+    deleteFromPos(head, tail, 10);
+    print(head);
+    cout << endl;
 
     return 0;
 }
