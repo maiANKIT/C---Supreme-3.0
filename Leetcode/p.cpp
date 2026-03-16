@@ -1,6 +1,7 @@
 #include <iostream>
-#include <vector>
+#include <string>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -8,33 +9,45 @@ int main()
 {
 
     int n;
-    cout << "enter the size: ";
+    cout << "enter size: ";
     cin >> n;
 
-    cout << "enter the values: ";
-    vector<int> nums(n);
-
-    for (int i = 0; i < nums.size(); i++)
+    vector<string> words(n);
+    cout << "enter strings: ";
+    for (int i = 0; i < words.size(); i++)
     {
-        cin >> nums[i];
+        cin >> words[i];
     }
 
-    int x = 0;
-    if (nums.size() == 1)
-        x = nums[0];
-    else
+    string order;
+    cout << "enter order: ";
+    cin >> order;
+
+    string x = "";
+    for (int i = 0; i < words.size(); i++)
     {
-        for (int i = 0; i < nums.size() - 1; i = i + 2)
+        x = x + words[i][0];
+    }
+
+    int y = -1;
+    int z = -1;
+    bool x = 1;
+    for (int i = 0; i < x.size(); i++)
+    {
+        for (int j = 0; j < order.size(); j++)
         {
-            if (nums[i] != nums[i + 1])
+            if (x[i] == order[j])
             {
-                x = nums[i];
+                y = j;
+            }
+
+            if (z < y)
+            {
+                x = 0;
                 break;
             }
         }
     }
-
-    cout << x;
 
     return 0;
 }
