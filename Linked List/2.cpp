@@ -24,7 +24,7 @@ public:
     }
 };
 
-void print(Node *&head) // ye ek function hi h
+void print(Node *&head) // ye ek function hi h jiske andar hmne Node ko pass kiya h
 {
 
     Node *temp = head; // isme second linked h
