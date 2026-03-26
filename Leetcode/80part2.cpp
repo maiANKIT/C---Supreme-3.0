@@ -50,19 +50,28 @@ int main()
     cout << endl;
 
     vector<int> ans;
-
     int j = 0;
-    int i = 0;
-    int count2 = 0;
-    while(i<nums.size()){
-        
-        int x = total[j] / 2;
-        int y = total[j] % 2;
-        int sum = x + y;
 
-        if(sum)
-        nums[i] = t[j];
+    for (int i = 0; i < nums.size(); )
+    {
 
+        if (total[j] > 2)
+        {
+            nums.erase(nums.begin() + i, nums.begin() + i + total[j] / 2);
+            // i--;
+        }
+        else
+        {
+            i++;
+            j++;
+        }
+    }
+    cout << "nums size: " << nums.size() << endl;
+
+    cout << "ans: ";
+    for (int i = 0; i < nums.size(); i++)
+    {
+        cout << nums[i] << " ";
     }
 
     return 0;
