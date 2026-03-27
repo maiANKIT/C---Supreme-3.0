@@ -9,9 +9,15 @@ int main()
     cout << "enter string: ";
     getline(cin, s);
 
-    string a = "";
+    // string a = "";
 
     bool x = 1;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] >= 65 && s[i] <= 90)
+            s[i] = s[i] + 32;
+    }
 
     int i = 0;
     int j = s.size() - 1;
@@ -31,16 +37,11 @@ int main()
         {
             j--;
         }
-        else if (s[i] != s[j] && (s[i] - 32 == s[j] || s[i] + 32 == s[j]))
-        {
-            i++;
-            j--;
-        }
-        else if (s[i] != s[j] && (s[i] >= 0 && s[i] < 48) || (s[i] >= 58 && s[i] < 65) || (s[i] >= 91 && s[i] < 97) || (s[i] >= 123 && s[i] < 128))
+        else if (s[i] != s[j] && ((s[i] >= 0 && s[i] < 48) || (s[i] >= 58 && s[i] < 65) || (s[i] >= 91 && s[i] < 97) || (s[i] >= 123 && s[i] < 128)))
         {
             i++;
         }
-        else if (s[i] != s[j] && (s[j] >= 0 && s[j] < 48) || (s[j] >= 58 && s[j] < 65) || (s[j] >= 91 && s[j] < 97) || (s[j] >= 123 && s[j] < 128))
+        else if (s[i] != s[j] && ((s[j] >= 0 && s[j] < 48) || (s[j] >= 58 && s[j] < 65) || (s[j] >= 91 && s[j] < 97) || (s[j] >= 123 && s[j] < 128)))
         {
             j--;
         }
