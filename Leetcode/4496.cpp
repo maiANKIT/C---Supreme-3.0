@@ -28,19 +28,30 @@ int main()
         cin >> nums2[i];
     }
 
+    int x = -1;
+
     for (int i = 0; i < nums1.size(); i++)
     {
-        for (int j = i + 1; j < nums2.size(); j++)
+        for (int j = 0; j < nums2.size(); j++)
         {
-            if (nums2[j] > nums1[i])
+            if (nums1[i] == nums2[j])
+            {
+                x = j;
+                if(j == nums2.size() - 1){
+                    nums1[i] = -1;
+                }
+            }
+            else if (x != -1 && nums2[j] > nums1[i])
             {
                 nums1[i] = nums2[j];
+                x = -1;
                 break;
             }
 
-            if (j == nums2.size() - 1 && nums2[j] < nums1[i])
+            else if (x != -1 && j == nums2.size() - 1 && nums2[j] <= nums1[i])
             {
                 nums1[i] = -1;
+                x = -1;
             }
         }
     }

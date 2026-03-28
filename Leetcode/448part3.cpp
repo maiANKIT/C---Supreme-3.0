@@ -20,36 +20,41 @@ int main()
         cin >> nums[i];
     }
 
-    int y = nums.size();
-
     sort(nums.begin(), nums.end());
 
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (nums[i] == nums[i + 1])
-        {
-            nums.erase(nums.begin() + i);
-            nums.erase(nums.begin() + i);
-            i=i-2;
-        }
-    }
-
-    vector<int> x;
+    vector<int> nums2;
     int k = 1;
     int i = 0;
 
-    // for(int i = 0; i<nums.size(); i++){
-    //     if(nums[i] == i + 1){
-    //         continue;
-    //     }
-    //     else if()
-    // }
-
-    cout << "x size: " << nums.size() << endl;
-
-    for (int i = 0; i < nums.size(); i++)
+    while (i < nums.size() && k <= nums.size())
     {
-        cout << nums[i] << " ";
+
+        if (nums[i] == k)
+        {
+            k++;
+            i++;
+        }
+        else if (i == nums.size() - 1 && nums[i] <= k)
+        {
+            nums2.push_back(k);
+            k++;
+        }
+        else if (nums[i] < k)
+        {
+            i++;
+        }
+        else if (nums[i] > k)
+        {
+            nums2.push_back(k);
+            k++;
+        }
+    }
+
+    cout << "nums2 size: " << nums2.size() << endl;
+
+    for (int i = 0; i < nums2.size(); i++)
+    {
+        cout << nums2[i] << " ";
     }
 
     return 0;
