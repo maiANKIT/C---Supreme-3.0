@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <numeric> //iske liye numeric header file use krna padega
 
 using namespace std;
 
@@ -15,9 +14,10 @@ int main()
     arr[3] = 40;
     arr[4] = 50;
 
-    int totalSum = accumulate(arr.begin(), arr.end(), 0);
-    cout << "total sum: " << totalSum << endl;
+    bool x = binary_search(arr.begin(), arr.end(), 50);
+    cout << x; // target
 
+    // it return boolean
 
     return 0;
 }
