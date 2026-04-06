@@ -14,7 +14,11 @@ int main()
     cin >> denominator;
 
     string x = to_string((double)numerator / denominator);
-    cout << x;
+    cout <<"x: " <<x;
+
+    for(int i = x.size() - 1; i>=0; i--){
+        if(x[i] == '0') 
+    }
 
     return 0;
 }
