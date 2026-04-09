@@ -33,19 +33,35 @@ void print(Node *&head)
       }
 }
 
-Node *reverse(Node *&prev, Node *&curr){
+// Node *reverse(Node *&prev, Node *&curr){
 
-      //base case
-      if(curr == NULL){
-            //LL reverse ho chuki h
-            return prev;
-      }
+//       //base case
+//       if(curr == NULL){
+//             //LL reverse ho chuki h
+//             return prev;
+//       }
 
-      //ek case solve krte h baki ka recursive call
-      Node* forward = curr->next;
-      curr->next = prev;
+//       //ek case solve krte h baki ka recursive call
+//       Node* forward = curr->next;
+//       curr->next = prev;
 
-      reverse(curr, forward);
+//       reverse(curr, forward);
+
+// }
+
+Node *reverseUsingLoop(Node *head){
+
+    Node *prev = NULL;
+    Node *curr = head;
+
+    while(curr != NULL){
+        Node *temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+
+    return prev;
 
 }
 
@@ -68,12 +84,13 @@ int main()
       
       cout<<endl;
 
-      Node *prev = NULL;
-      Node *curr = first;
+    //   Node *prev = NULL;
+    //   Node *curr = first;
 
-      first = reverse(prev, curr);
+      first = reverseUsingLoop(first);
       cout<<"reversed values: ";
       print(first);
+    
 
 
       return 0;
