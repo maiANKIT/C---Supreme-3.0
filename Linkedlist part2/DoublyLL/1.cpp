@@ -25,6 +25,10 @@ public:
         this->prev = NULL;
         this->next = NULL;
     }
+
+    ~Node(){
+        
+    }
 };
 
 // print function
@@ -153,6 +157,89 @@ void insertAtPosition(Node *&head, Node *&tail, int data, int position)
     newNode->next = curr;
 }
 
+//delete from position
+
+void deleteFromPos(Node *&head, Node *&tail, int position){
+
+    if(head == NULL){
+
+        cout<<"linked list is empty";
+        return;
+
+    }
+
+    if(head->next == NULL){
+        //single node
+        
+        Node *temp = head;
+
+        head = NULL;
+        tail = NULL;
+        delete temp;
+        return;
+
+    }
+
+    int len = getLength(head);
+
+    if(position > len){
+
+        cout<<"please enter correct position";
+
+    }
+
+
+    if(position == 1){
+
+        Node *&temp = head;
+
+        head = head -> next;
+        head->prev = NULL;
+        temp -> next = NULL;
+        delete temp;
+        return;
+
+    }
+
+    
+    if(position == len){
+
+        Node *temp = tail;
+        
+        tail = tail -> prev;
+        temp->prev = NULL;
+        tail->next = NULL;
+
+        delete temp;
+        return;
+
+    }
+
+    //delete from middle
+    int i = 1;
+    Node *left = head;
+    while(i<position - 1){
+
+        left = left -> next;
+        i++;
+
+    }
+
+    Node *curr = left->next;
+    Node *right = curr->next;
+
+    left->next = right;
+    right->prev = left;
+    curr->next = NULL;
+    curr->prev = NULL;
+
+    delete curr;
+
+
+}
+
+
+
 int main()
 {
 
@@ -172,6 +259,8 @@ int main()
     insertAtHead(head, tail, 0);
     insertAtTail(head, tail, 40);
     insertAtPosition(head, tail, 55, 2);
+
+    deleteFromPos(head, tail, 1);
 
     print(head);
 
