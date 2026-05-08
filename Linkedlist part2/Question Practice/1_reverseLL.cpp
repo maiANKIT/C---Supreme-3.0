@@ -48,11 +48,11 @@ Node *reverseLL(Node *&prev, Node *&curr)
         return prev;
     }
 
-    Node *temp = curr->next;
+    Node *forward = curr->next;
 
     curr->next = prev;
 
-    return reverseLL(curr, temp);
+    return reverseLL(curr, forward);
 }
 
 int main()
