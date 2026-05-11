@@ -20,6 +20,10 @@ public:
         this->data = data;
         this->next = NULL;
     }
+
+    ~Node(){
+
+    }
 };
 
 void print(Node *&head)
@@ -89,7 +93,7 @@ Node *startingPoint(Node *&head)
             break;
         }
     }
-    
+
     while (slow != fast)
     {
         slow = slow->next;
@@ -97,6 +101,81 @@ Node *startingPoint(Node *&head)
     }
 
     return slow;
+}
+
+Node *reverse(Node *&head)
+{
+
+    Node *prev = NULL;
+    Node *curr = head;
+    Node *forward = curr->next;
+
+    while (curr != NULL)
+    {
+
+        forward = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = forward;
+    }
+
+    return prev;
+}
+
+bool checkPallindrome(Node *&head)
+{
+
+    if (head == NULL)
+    {
+        cout << "LL is empty" << endl;
+        return true;
+    }
+
+    if (head->next == NULL)
+    {
+        return true;
+    }
+
+    Node *fast = head;
+    Node *slow = head;
+
+    while (fast != NULL)
+    {
+        fast = fast->next;
+        if (fast != NULL)
+        {
+
+            fast = fast->next;
+            slow = slow->next;
+        }
+    }
+
+    // slow is middle LL
+    // now we have to reverse the linkedlist from the middle
+
+    Node *reverseLLkaHead = reverse(slow->next);
+
+    slow->next = reverseLLkaHead;
+
+    // start comparision
+    Node *temp1 = head;
+    Node *temp2 = reverseLLkaHead;
+
+    while (temp2 != NULL)
+    {
+
+        if (temp1->data != temp2->data)
+        {
+            return false;
+        }
+        else
+        {
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+        }
+    }
+
+    return true;
 }
 
 Node *removeLoop(Node *&head)
@@ -139,34 +218,59 @@ Node *removeLoop(Node *&head)
     return slow;
 }
 
+// remove duplicate from sorted LL
+
+void removeDuplicate(Node *&head)
+{
+
+    if (head == NULL)
+    {
+        cout << "LL is empty" << endl;
+        return;
+    }
+
+    if (head->next == NULL)
+    {
+        cout << "single sized LL" << endl;
+        return;
+    }
+
+    Node *curr = head;
+    while (curr != NULL)
+    {
+        if ((curr->next != NULL) && (curr->data == curr->next->data))
+        {
+            Node *temp = curr->next;
+            // equal
+            curr->next = curr->next->next;
+
+            temp->next = NULL;
+            delete temp;
+
+        }
+        else
+        {
+            curr = curr->next;
+        }
+    }
+}
+
 int main()
 {
 
     Node *head = new Node(10);
     Node *second = new Node(20);
-    Node *third = new Node(30);
-    Node *forth = new Node(40);
-    Node *fifth = new Node(50);
-    Node *sixth = new Node(60);
-    Node *seventh = new Node(70);
-    Node *eight = new Node(80);
-    Node *ninth = new Node(90);
-
+    Node *third = new Node(20);
+    Node *forth = new Node(30);
+    Node *fifth = new Node(40);
     head->next = second;
     second->next = third;
     third->next = forth;
     forth->next = fifth;
-    fifth->next = sixth;
-    sixth->next = seventh;
-    seventh->next = eight;
-    eight->next = ninth;
-    ninth->next = fifth;
 
-    cout << "loop present: " << checkCircular(head) << endl;
-    cout << "starting point: " << startingPoint(head)->data << endl;
-
-    removeLoop(head);
-    cout << "loop present now: " << checkCircular(head) << endl;
+    // cout << "pallindrome: " << checkPallindrome(head);
+    removeDuplicate(head);
+    print(head);
 
     return 0;
 }
