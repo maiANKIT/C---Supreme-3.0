@@ -108,18 +108,18 @@ int main()
     Node *third = new Node(30);
     Node *forth = new Node(40);
     Node *fifth = new Node(50);
-    Node *sixth = new Node(60);
+    // Node *sixth = new Node(60);
 
     head->next = second;
     second->next = third;
     third->next = forth;
     forth->next = fifth;
-    fifth->next = sixth;
+    // fifth->next = sixth;
 
     print(head);
     cout << endl;
 
-    Node *newNode = reverseKNodes(head, 2);
+    Node *newNode = reverseKNodes(head, 3);
     print(newNode);
 
     return 0;
