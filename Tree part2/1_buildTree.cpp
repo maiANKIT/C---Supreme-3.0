@@ -13,7 +13,7 @@ public:
     Node(int value)
     {
         data = value;
-        left = NULL;
+        left = NULL;   
         right = NULL;
     }
 };
