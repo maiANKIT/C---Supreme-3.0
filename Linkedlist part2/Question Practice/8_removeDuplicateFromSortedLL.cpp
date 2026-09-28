@@ -263,10 +263,16 @@ int main()
     Node *third = new Node(20);
     Node *forth = new Node(30);
     Node *fifth = new Node(40);
+    Node *sixth = new Node(40);
+    Node *seventh = new Node(40);
+    Node *eigth = new Node(40);
     head->next = second;
     second->next = third;
     third->next = forth;
     forth->next = fifth;
+    fifth->next = sixth;
+    sixth->next = seventh;
+    seventh->next = eigth;
 
     // cout << "pallindrome: " << checkPallindrome(head);
     removeDuplicate(head);
