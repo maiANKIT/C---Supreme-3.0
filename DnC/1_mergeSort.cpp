@@ -10,6 +10,7 @@ void merge(int *arr, int s, int e)
     int len1 = mid - s + 1;
     int len2 = e - mid;
 
+    //new address ko denote krta h
     int *left = new int[len1];
     int *right = new int[len2];
 
