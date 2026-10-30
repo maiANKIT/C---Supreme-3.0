@@ -53,6 +53,7 @@ void levelorderTraversal(Node *root)
 
         Node *front = q.front();
         q.pop();
+        q.push(nullptr);
 
         if (front == NULL)
         {
